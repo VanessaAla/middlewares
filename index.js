@@ -21,7 +21,10 @@ function failRandomlyMiddleware(req, res, next) {
   }
 }
 
+app.use(loggingMiddleware);
+
 //app.get("/", (req, res) => res.send("Hello"));
 app.get("/", failRandomlyMiddleware, (req, res) => res.send("Hello"));
+app.get("/foo", (req, res) => res.send("Hello"));
 
 app.listen(port, () => console.log(`Example app listening on port ${port}!`));
